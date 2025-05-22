@@ -79,6 +79,8 @@ nav a:hover {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 .highlight {
@@ -89,12 +91,16 @@ nav a:hover {
     font-size: 1.25rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
 }
 
 .hero-cta {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
 }
 
 .cta-button {
@@ -132,6 +138,22 @@ h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--accent);
+}
+
+.section-heading {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+}
+
+h2.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 /* About section styles */
@@ -183,6 +205,12 @@ h2 {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-item:hover {
+    transform: translateY(-8px);
 }
 
 .tech-icon {
@@ -193,13 +221,26 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 1rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.tech-icon:hover {
-    transform: translateY(-2px);
-    background-color: var(--accent);
+.tech-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(74, 158, 255, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-icon:hover::after {
+    opacity: 1;
 }
 
 .tech-icon img {
@@ -258,6 +299,30 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover::before {
+    transform: translateX(100%);
 }
 
 .project-content h3 {
@@ -330,11 +395,16 @@ h2 {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    min-width: 120px;
 }
 
 .contact-item:hover {
     transform: translateY(-5px);
+    background-color: rgba(74, 158, 255, 0.1);
 }
 
 .contact-icon {
@@ -344,13 +414,24 @@ h2 {
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
+    position: relative;
 }
 
-.contact-icon img {
+.contact-icon::after {
+    content: '';
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    filter: brightness(0.9);
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0;
+    transform: scale(1.4);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon::after {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .contact-label {
@@ -375,6 +456,18 @@ h2 {
 
     .about-content {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
