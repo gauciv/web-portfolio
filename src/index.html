@@ -16,6 +16,7 @@
     <script src="scripts/github-integration.js" defer></script>
 </head>
 <body>
+    <div class="scroll-progress"></div>
     <header>
         <nav>
             <ul>
@@ -149,7 +150,7 @@
                 <span class="project-count"></span>
             </div>
             <div class="projects-grid">
-                <article class="project-card" data-category="devops">
+                <article class="project-card" data-category="devops" data-repo="project-one">
                     <div class="project-content">
                         <div class="project-header">
                             <h3>Project One</h3>
@@ -165,19 +166,19 @@
                             <span class="tag">CI/CD</span>
                         </div>
                         <div class="project-metrics">
-                            <div class="metric">
+                            <div class="metric" data-type="stars">
                                 <span class="metric-icon">⭐</span>
-                                <span class="metric-value">24</span>
+                                <span class="metric-value">-</span>
                             </div>
-                            <div class="metric">
+                            <div class="metric" data-type="forks">
                                 <span class="metric-icon">🔀</span>
-                                <span class="metric-value">5</span>
+                                <span class="metric-value">-</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">View Project</a>
-                        <a href="#" class="project-link secondary">Source Code</a>
+                        <a href="#" class="project-link" data-type="demo">View Project</a>
+                        <a href="#" class="project-link" data-type="source">Source Code</a>
                     </div>
                 </article>
 

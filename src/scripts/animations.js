@@ -1,5 +1,19 @@
 // Scroll reveal animations
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll Progress Indicator
+    const scrollProgress = document.querySelector('.scroll-progress');
+    
+    function updateScrollProgress() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        scrollProgress.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateScrollProgress);
+    window.addEventListener('resize', updateScrollProgress);
+    
     // Scroll reveal animations
     const observerOptions = {
         threshold: 0.15,
@@ -12,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('visible');
             }
         });
     }, observerOptions);
