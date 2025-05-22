@@ -96,6 +96,48 @@ h2 {
     margin-bottom: 0;
 }
 
+/* Tech Stack styles */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 1rem 0;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tech-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.tech-icon:hover {
+    transform: translateY(-5px);
+}
+
+.placeholder-icon {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.tech-name {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 /* Ensure responsive behavior */
 @media (max-width: 768px) {
     header, main, footer {
