@@ -488,6 +488,19 @@ h2.section-heading::after {
     transform: scale(1);
 }
 
+.contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon img {
+    transform: scale(1.1);
+}
+
 .contact-label {
     color: var(--text-secondary);
     font-size: 0.9rem;
