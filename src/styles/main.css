@@ -326,7 +326,7 @@ h2.section-heading::after {
 }
 
 .project-card {
-    background-color: var(--bg-secondary);
+    background-color: rgba(22, 27, 34, 0.95);
     border-radius: 8px;
     padding: 1.5rem;
     display: flex;
@@ -336,8 +336,9 @@ h2.section-heading::after {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(74, 158, 255, 0.08);
+    border: 1px solid rgba(88, 166, 255, 0.15);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-height: 320px;
 }
 
 .project-card::before {
@@ -398,11 +399,12 @@ h2.section-heading::after {
 }
 
 .tag {
-    background: rgba(74, 158, 255, 0.1);
-    color: var(--accent);
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--text-primary);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .project-metrics {
@@ -433,18 +435,25 @@ h2.section-heading::after {
     margin-bottom: 1rem;
     font-size: 0.95rem;
     line-height: 1.6;
+    opacity: 0.95;
 }
 
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .project-link {
-    color: var(--accent);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    background-color: rgba(88, 166, 255, 0.1);
     text-decoration: none;
     font-size: 0.875rem;
-    transition: opacity 0.2s ease;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(88, 166, 255, 0.2);
 }
 
 .project-link:hover {
