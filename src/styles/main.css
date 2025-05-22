@@ -336,7 +336,8 @@ h2.section-heading::after {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(74, 158, 255, 0.1);
+    border: 1px solid rgba(74, 158, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .project-card::before {
@@ -346,7 +347,7 @@ h2.section-heading::after {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.5), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
 }
@@ -428,8 +429,10 @@ h2.section-heading::after {
 }
 
 .project-content p {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .project-links {
@@ -446,6 +449,48 @@ h2.section-heading::after {
 
 .project-link:hover {
     opacity: 0.8;
+}
+
+/* Filter buttons styles */
+.project-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.filter-button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.project-count {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 /* Contact section styles */
