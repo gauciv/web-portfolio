@@ -170,43 +170,19 @@ h2 {
 
 /* Tech Stack styles */
 .tech-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 2rem;
-    padding: 1rem 0.5rem;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-}
-
-.tech-grid:hover .tech-item {
-    animation-play-state: paused;
-}
-
-.tech-item {
-    animation: scroll 20s linear infinite;
-}
-
-.tech-grid::-webkit-scrollbar {
-    height: 6px;
-}
-
-.tech-grid::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-radius: 3px;
-}
-
-.tech-grid::-webkit-scrollbar-thumb {
-    background-color: var(--accent);
-    border-radius: 3px;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .tech-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    flex: 0 0 auto;
-    width: 100px;
+    gap: 1rem;
 }
 
 .tech-icon {
@@ -217,26 +193,31 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
+    padding: 1rem;
 }
 
 .tech-icon:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
+    background-color: var(--accent);
 }
 
-.placeholder-icon {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent);
+.tech-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0.9);
 }
 
 .tech-name {
     font-size: 0.9rem;
     color: var(--text-secondary);
+    text-align: center;
+    font-weight: 500;
 }
 
 .stack-category {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .stack-category:last-child {
@@ -246,8 +227,20 @@ h2 {
 .stack-category h3 {
     color: var(--text-primary);
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
+    position: relative;
+}
+
+.stack-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent);
 }
 
 /* Projects section styles */
@@ -374,19 +367,4 @@ h2 {
     }
 }
 
-/* Scroll animation keyframes */
-@keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* Ensure smooth animation */
-@media (prefers-reduced-motion: reduce) {
-    .tech-item {
-        animation: none;
-    }
-}
+/* End of styles */
