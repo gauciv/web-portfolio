@@ -138,6 +138,64 @@ h2 {
     color: var(--text-secondary);
 }
 
+/* Projects section styles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.project-card {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-content h3 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.project-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: var(--bg-primary);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+    opacity: 0.8;
+}
+
 /* Ensure responsive behavior */
 @media (max-width: 768px) {
     header, main, footer {
