@@ -210,6 +210,21 @@ h2 {
     color: var(--text-secondary);
 }
 
+.stack-category {
+    margin-bottom: 3rem;
+}
+
+.stack-category:last-child {
+    margin-bottom: 0;
+}
+
+.stack-category h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
 /* Projects section styles */
 .projects-grid {
     display: grid;
