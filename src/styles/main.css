@@ -196,6 +196,52 @@ h2 {
     opacity: 0.8;
 }
 
+/* Contact section styles */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.contact-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
 /* Ensure responsive behavior */
 @media (max-width: 768px) {
     header, main, footer {
