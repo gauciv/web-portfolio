@@ -171,13 +171,19 @@ h2 {
 /* Tech Stack styles */
 .tech-grid {
     display: flex;
-    overflow-x: auto;
     gap: 2rem;
     padding: 1rem 0.5rem;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) var(--bg-secondary);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.tech-grid:hover .tech-item {
+    animation-play-state: paused;
+}
+
+.tech-item {
+    animation: scroll 20s linear infinite;
 }
 
 .tech-grid::-webkit-scrollbar {
@@ -365,5 +371,22 @@ h2 {
 
     .about-content {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Scroll animation keyframes */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Ensure smooth animation */
+@media (prefers-reduced-motion: reduce) {
+    .tech-item {
+        animation: none;
     }
 }
