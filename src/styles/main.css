@@ -27,9 +27,53 @@ header, main, footer {
     margin: 0 auto;
 }
 
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Section styles */
+section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--bg-secondary);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
 /* Ensure responsive behavior */
 @media (max-width: 768px) {
     header, main, footer {
         padding: 1rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    section {
+        padding: 2rem 0;
     }
 }
