@@ -1,14 +1,52 @@
 // Scroll reveal animations
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Progress Indicator
+    // Scroll Progress Indicator with Color Transition
     const scrollProgress = document.querySelector('.scroll-progress');
+    
+    function getGradientColors(progress) {
+        // Define color stops for the gradient
+        const colorStops = [
+            { color: '#58a6ff', pos: 0 },    // var(--accent)
+            { color: '#1f6feb', pos: 33 },   // var(--accent-secondary)
+            { color: '#238636', pos: 66 },   // success green
+            { color: '#6f42c1', pos: 100 }   // purple
+        ];
+        
+        // Find the current color segment based on progress
+        let startColor, endColor;
+        for (let i = 0; i < colorStops.length - 1; i++) {
+            if (progress >= colorStops[i].pos && progress <= colorStops[i + 1].pos) {
+                startColor = colorStops[i];
+                endColor = colorStops[i + 1];
+                break;
+            }
+        }
+        
+        // If progress is beyond the last stop, use the last two colors
+        if (!startColor) {
+            startColor = colorStops[colorStops.length - 2];
+            endColor = colorStops[colorStops.length - 1];
+        }
+        
+        return [startColor.color, endColor.color];
+    }
     
     function updateScrollProgress() {
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight - windowHeight;
         const scrolled = window.scrollY;
         const progress = (scrolled / documentHeight) * 100;
+        
+        // Update progress bar width
         scrollProgress.style.width = `${progress}%`;
+        
+        // Update gradient colors
+        const [startColor, endColor] = getGradientColors(progress);
+        scrollProgress.style.background = `linear-gradient(90deg, ${startColor}, ${endColor})`;
+        
+        // Update glow effect color
+        const glowColor = progress < 50 ? startColor : endColor;
+        scrollProgress.style.boxShadow = `0 0 10px ${glowColor}80`; // 80 is for 50% opacity
     }
 
     window.addEventListener('scroll', updateScrollProgress);
