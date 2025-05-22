@@ -44,8 +44,10 @@ body::before {
     height: 3px;
     background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
     z-index: 1000;
-    transition: width 0.1s ease-out;
+    transition: width 0.1s ease-out, background 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Basic layout structure */
@@ -205,32 +207,157 @@ h2.section-heading::after {
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
     align-items: start;
+    padding: 1rem;
+}
+
+.about-card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(88, 166, 255, 0.1) 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+.about-header {
+    margin-bottom: 2rem;
+}
+
+.typing-text {
+    font-family: 'Inter', monospace;
+    font-size: 1.5rem;
+    color: var(--accent);
+    border-right: 2px solid var(--accent);
+    padding-right: 5px;
+    animation: typing 3.5s steps(40, end),
+               blink-caret .75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.highlight-text {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
 }
 
 .about-text p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-secondary);
+    line-height: 1.6;
 }
 
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-.about-highlights ul {
-    list-style: none;
-    background-color: var(--bg-secondary);
-    padding: 1.5rem;
+.code-snippet {
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.about-highlights li {
-    margin-bottom: 0.75rem;
+.code-snippet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+    animation: shine 2s infinite;
+}
+
+.code-snippet pre {
+    margin: 0;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.highlight-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-card h3 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.highlight-list {
+    list-style: none;
+}
+
+.highlight-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(88, 166, 255, 0.1);
+    border-radius: 8px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.highlight-list li:hover {
+    transform: translateX(5px);
+    background: rgba(88, 166, 255, 0.15);
+}
+
+.highlight-icon {
+    font-size: 1.5rem;
+}
+
+.highlight-label {
     color: var(--text-primary);
     font-weight: 500;
 }
 
-.about-highlights li:last-child {
-    margin-bottom: 0;
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent) }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) }
+    100% { transform: translateX(100%) }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-card,
+    .highlight-card {
+        margin-bottom: 2rem;
+    }
+    
+    .typing-text {
+        font-size: 1.2rem;
+    }
 }
 
 /* Tech Stack styles */
