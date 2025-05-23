@@ -1,3 +1,19 @@
+/**
+ * particles.js
+ * Creates an interactive particle background effect.
+ * Particles move with slight randomization and respond to window resize.
+ * Uses HTML5 Canvas for optimal performance.
+ * 
+ * Configuration:
+ * - Particle density is adjusted based on screen size
+ * - Particles have subtle opacity and size variation
+ * - Movement is semi-random with controlled speed
+ * - Color matches the theme accent color
+ * 
+ * @author John Vincent Augusto
+ * @version 1.0.0
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.createElement('canvas');
     canvas.id = 'particle-canvas';

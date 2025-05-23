@@ -1,4 +1,16 @@
-// Scroll reveal animations
+/**
+ * animation.js
+ * Handles all UI animations and interactions including:
+ * - Scroll progress indicator with dynamic color transitions
+ * - Scroll reveal animations for sections
+ * - Smooth scrolling navigation
+ * - Active section highlighting
+ * - Tech stack hover effects
+ * 
+ * @author John Vincent Augusto
+ * @version 1.0.0
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll Progress Indicator with Color Transition
     const scrollProgress = document.querySelector('.scroll-progress');
