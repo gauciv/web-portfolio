@@ -225,7 +225,8 @@ h2.section-heading::after {
 }
 
 .about-header {
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 .typing-text {
@@ -358,6 +359,46 @@ h2.section-heading::after {
     .typing-text {
         font-size: 1.2rem;
     }
+}
+
+/* Profile image styles */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent);
+    position: relative;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.5);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Tech Stack styles */
