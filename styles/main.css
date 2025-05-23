@@ -707,7 +707,6 @@ h2.section-heading::after {
     inset: 0;
     border-radius: 8px;
     padding: 1px;
-    background: linear-gradient(45deg, transparent, var(--accent), transparent);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 }
