@@ -865,12 +865,14 @@ h2.section-heading::after {
 .contact-item {
     position: relative;
     text-decoration: none;
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(88, 166, 255, 0.1) 100%);
+    background: rgba(22, 27, 34, 0.6);
     border-radius: 12px;
     padding: 1.5rem;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(88, 166, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(88, 166, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .contact-item::before {
@@ -909,44 +911,79 @@ h2.section-heading::after {
 .contact-icon {
     width: 48px;
     height: 48px;
-    background: rgba(88, 166, 255, 0.1);
+    background: rgba(88, 166, 255, 0.05);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .contact-icon img {
     width: 24px;
     height: 24px;
     filter: brightness(0) invert(1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.contact-item:hover {
+    border-color: rgba(88, 166, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .contact-item:hover .contact-icon {
-    background: var(--accent);
+    background: rgba(88, 166, 255, 0.1);
+}
+
+.contact-item:hover .contact-icon::after {
+    opacity: 1;
 }
 
 .contact-item:hover .contact-icon img {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 .contact-details {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    transition: transform 0.3s ease;
 }
 
 .contact-label {
     color: var(--text-primary);
     font-weight: 500;
     font-size: 1.1rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
 }
 
 .contact-value {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item:hover .contact-label {
+    opacity: 1;
+}
+
+.contact-item:hover .contact-value {
+    color: var(--accent);
 }
 
 .contact-hover-effect {
