@@ -1400,4 +1400,38 @@ h2.section-heading::after {
     }
 }
 
+/* Footer styles */
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-text {
+    font-family: 'Monaco', monospace;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-prompt {
+    color: var(--accent);
+}
+
+.footer-command {
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 1rem;
+    }
+    
+    .footer-text {
+        font-size: 0.9rem;
+    }
+}
+
 /* End of styles */
