@@ -122,29 +122,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tech stack interaction enhancements
     function addTechStackEffects() {
+        // Check if device supports hover (usually indicates a non-mobile device)
+        const supportsHover = window.matchMedia('(hover: hover)').matches;
+
         techItems.forEach((item, index) => {
             // Set initial animation delay
             item.style.animationDelay = `${index * 0.1}s`;
             
-            // Add mouse movement effect
-            item.addEventListener('mousemove', (e) => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+            // Only add mouse movement effect on devices that support hover
+            if (supportsHover) {
+                let requestId;
                 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+                item.addEventListener('mousemove', (e) => {
+                    // Cancel any existing animation frame
+                    if (requestId) {
+                        cancelAnimationFrame(requestId);
+                    }
+                    
+                    // Use requestAnimationFrame for smooth animation
+                    requestId = requestAnimationFrame(() => {
+                        const rect = item.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        const angleX = (y - centerY) / 10;
+                        const angleY = (centerX - x) / 10;
+                        
+                        item.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+                    });
+                });
                 
-                const angleX = (y - centerY) / 10;
-                const angleY = (centerX - x) / 10;
+                item.addEventListener('mouseleave', () => {
+                    if (requestId) {
+                        cancelAnimationFrame(requestId);
+                    }
+                    item.style.transform = 'translateY(0)';
+                });
+            } else {
+                // Simplified animation for mobile devices
+                item.addEventListener('touchstart', () => {
+                    item.style.transform = 'translateY(-5px)';
+                });
                 
-                item.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
-            });
-            
-            // Reset transform on mouse leave
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0)';
-            });
+                item.addEventListener('touchend', () => {
+                    item.style.transform = 'translateY(0)';
+                });
+            }
         });
     }
     
