@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="John Vincent Augusto - DevOps Engineer Portfolio">
     <title>Gauciv</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA4-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR-GA4-ID');
+    </script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +22,7 @@
     <script src="scripts/particles.js" defer></script>
     <script src="scripts/filter.js" defer></script>
     <script src="scripts/github-integration.js" defer></script>
+    <script src="scripts/analytics.js" defer></script>
 </head>
 <body>
     <div class="scroll-progress"></div>
@@ -354,6 +363,10 @@
             <span class="footer-prompt">$</span>
             <span class="footer-command">echo "gauciv@2025"</span>
         </p>
+        <div class="visitor-count-container">
+            <span class="visitor-label">visitors: </span>
+            <span class="visitor-count">counting...</span>
+        </div>
     </footer>
 </body>
 </html>
