@@ -119,4 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
     techItems.forEach((item, index) => {
         item.style.setProperty('--item-index', index);
     });
+
+    // Tech stack interaction enhancements
+    function addTechStackEffects() {
+        techItems.forEach((item, index) => {
+            // Set initial animation delay
+            item.style.animationDelay = `${index * 0.1}s`;
+            
+            // Add mouse movement effect
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleX = (y - centerY) / 10;
+                const angleY = (centerX - x) / 10;
+                
+                item.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+            });
+            
+            // Reset transform on mouse leave
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+    }
+    
+    addTechStackEffects();
 });
