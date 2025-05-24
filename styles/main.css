@@ -204,30 +204,26 @@ h2.section-heading::after {
 /* About section styles */
 .about-content {
     display: grid;
-    grid-template-columns: minmax(300px, 2fr) minmax(250px, 1fr);
-    gap: 2rem;
+    grid-template-columns: minmax(280px, 2fr) minmax(280px, 1fr);
+    gap: 1.5rem;
     align-items: start;
-    padding: clamp(0.5rem, 2vw, 1rem);
+    padding: 1rem;
     margin: 0 auto;
     width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    min-width: 320px;
+    max-width: 1200px;
 }
 
 .about-card {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(88, 166, 255, 0.1) 100%);
-    border-radius: 12px;
-    padding: clamp(1rem, 3vw, 2rem);
-    border: 1px solid rgba(88, 166, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(22, 27, 34, 0.9), rgba(88, 166, 255, 0.1));
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(88, 166, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
     width: 100%;
-    max-width: 100%;
-    word-wrap: break-word;
-    word-break: break-word;
 }
 
 .about-card:hover {
@@ -295,17 +291,16 @@ h2.section-heading::after {
 }
 
 .highlight-card {
-    background: var(--bg-secondary);
-    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(22, 27, 34, 0.9), rgba(88, 166, 255, 0.1));
+    border-radius: 8px;
     padding: 1.5rem;
-    border: 1px solid rgba(88, 166, 255, 0.2);
-    transition: transform 0.3s ease;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
+    border: 1px solid rgba(88, 166, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    position: relative;
     overflow: hidden;
-    word-wrap: break-word;
-    word-break: break-word;
+    backdrop-filter: blur(10px);
+    width: 100%;
 }
 
 .highlight-card:hover {
@@ -368,26 +363,19 @@ h2.section-heading::after {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 1rem;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-                                                                                            
-    .about-card {
-        width: 100%;
-        padding: 1.25rem;
-        margin: 0 auto;
-        max-width: 100%;
-        overflow: hidden;
     }
 
+    .about-card,
     .highlight-card {
-        width: 100%;
-        padding: 1.25rem;
-        margin: 0 auto;
-        max-width: 100%;
-        overflow: hidden;
+        min-height: unset;
+        font-size: 0.95rem;
     }
+
+    .code-snippet pre {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+}
 
     .code-snippet {
         max-width: 100%;
@@ -398,30 +386,29 @@ h2.section-heading::after {
         white-space: pre-wrap;
         word-wrap: break-word;
     }
-}
+
 
 @media (max-width: 480px) {
     .about-content {
         padding: 0.75rem;
-        width: 100%;
+        gap: 1rem;
     }
 
     .about-card,
     .highlight-card {
-        padding: 1rem;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100%;
+        padding: 1.25rem;
     }
 
     .highlight-text {
-        font-size: 0.95rem;
-        padding-left: 0.5rem;
+        font-size: 0.9rem;
+        padding-left: 0.75rem;
+        line-height: 1.5;
     }
 
     .code-snippet {
-        padding: 0.75rem;
+        padding: 1rem;
         margin-top: 1rem;
+        font-size: 0.8rem;
     }
 }
 
