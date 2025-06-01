@@ -460,6 +460,35 @@ h2.section-heading::after {
     padding: 2rem;
 }
 
+/* Specific grid layout for programming languages */
+.tech-grid.programming-languages {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .tech-grid.programming-languages {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-grid.programming-languages {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-grid.programming-languages {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
 .tech-item {
     position: relative;
     display: flex;
@@ -501,6 +530,16 @@ h2.section-heading::after {
     object-fit: contain;
     filter: brightness(0) invert(1);
     transition: transform 0.3s ease;
+}
+
+/* Specific styling for bash icon */
+.tech-icon img[alt="Bash Script"] {
+    filter: brightness(0) invert(1) sepia(0) saturate(0) hue-rotate(0deg);
+    opacity: 0.9;
+}
+
+.tech-item:hover .tech-icon img[alt="Bash Script"] {
+    opacity: 1;
 }
 
 .tech-name {
