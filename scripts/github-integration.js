@@ -107,36 +107,46 @@ function updateProjectCard(card, stats) {
 }
 
 async function refreshAllProjects() {
-    const projectCards = document.querySelectorAll('.project-card');
     const refreshButton = document.getElementById('refresh-projects');
-    const lastUpdateTimeElement = document.getElementById('last-update-time');
+    const lastUpdateTimeSpan = document.getElementById('last-update-time');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    if (refreshButton) {
-        refreshButton.disabled = true;
-        refreshButton.classList.add('refreshing');
-    }
+    refreshButton.disabled = true;
+    refreshButton.classList.add('refreshing');
+    projectCards.forEach(card => card.classList.add('refreshing'));
 
-    try {
-        for (const card of projectCards) {
-            const repoName = card.dataset.repo;
-            if (repoName) {
-                const stats = await getRepositoryStats(repoName);
-                updateProjectCard(card, stats);
-            }
-        }
+    lastUpdateTimeSpan.textContent = 'Refreshing...';
 
-        lastUpdateTime = new Date();
-        if (lastUpdateTimeElement) {
-            lastUpdateTimeElement.textContent = lastUpdateTime.toLocaleTimeString();
+    const updatePromises = [];
+    projectCards.forEach(card => {
+        const repoName = card.dataset.repo;
+        if (repoName) {
+            updatePromises.push(getRepositoryStats(repoName).then(repoData => {
+                if (repoData) {
+                    updateProjectCard(card, repoData);
+                }
+            }).catch(error => {
+                console.error(`Error fetching stats for ${repoName}:`, error);
+                // Optionally update card to show error or old data
+            }));
         }
-    } catch (error) {
-        console.error('Error refreshing projects:', error);
-    } finally {
-        if (refreshButton) {
-            refreshButton.disabled = false;
-            refreshButton.classList.remove('refreshing');
-        }
-    }
+    });
+
+    await Promise.all(updatePromises);
+
+    const now = new Date();
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    lastUpdateTimeSpan.textContent = now.toLocaleDateString('en-US', options);
+
+    refreshButton.disabled = false;
+    refreshButton.classList.remove('refreshing');
+    projectCards.forEach(card => card.classList.remove('refreshing'));
+
+    // Optionally trigger a fade-in effect for refreshed cards
+    projectCards.forEach(card => {
+        card.style.opacity = 0;
+        setTimeout(() => { card.style.opacity = 1; }, 50);
+    });
 }
 
 // Initialize refresh functionality
