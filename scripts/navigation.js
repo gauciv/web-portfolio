@@ -39,4 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', updateActiveNavItem);
+
+    // Responsive navigation toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksContainer = document.getElementById('nav-links');
+
+    if (navToggle && navLinksContainer) {
+        navToggle.addEventListener('click', function() {
+            navLinksContainer.classList.toggle('open');
+        });
+    }
+
+    // Optional: Close menu when a link is clicked (mobile UX)
+    navLinksContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksContainer.classList.remove('open');
+        });
+    });
 });
