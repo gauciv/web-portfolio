@@ -191,7 +191,63 @@
                     <button class="filter-button" data-filter="solo">Solo Projects</button>
                     <button class="filter-button" data-filter="team">Team Projects</button>
                 </div>
-                <span class="project-count"></span>
+                <div class="filter-actions">
+                    <button class="legend-button" id="metrics-legend" aria-label="View metrics explanation">
+                        <svg class="legend-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                    </button>
+                    <span class="project-count"></span>
+                </div>
+            </div>
+            <div class="metrics-legend-tooltip" id="metrics-tooltip">
+                <div class="tooltip-header">
+                    <h4>Project Metrics Explained</h4>
+                    <button class="close-tooltip" aria-label="Close tooltip">×</button>
+                </div>
+                <div class="tooltip-content">
+                    <div class="metric-explanation">
+                        <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <div class="explanation-text">
+                            <strong>Stars</strong>
+                            <p>Number of GitHub stars received for the project</p>
+                        </div>
+                    </div>
+                    <div class="metric-explanation">
+                        <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                        <div class="explanation-text">
+                            <strong>Forks</strong>
+                            <p>Number of times the project has been forked</p>
+                        </div>
+                    </div>
+                    <div class="metric-explanation">
+                        <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <div class="explanation-text">
+                            <strong>Commits</strong>
+                            <p>Total number of commits made to the repository</p>
+                        </div>
+                    </div>
+                    <div class="metric-explanation">
+                        <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <div class="explanation-text">
+                            <strong>Contributors</strong>
+                            <p>Number of people who contributed to the project</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="projects-grid">
                 <article class="project-card" data-category="team" data-repo="inventory_management_system">
@@ -214,26 +270,26 @@
                             <span class="tag">Desktop App</span>
                         </div>
                         <div class="project-metrics">
-                            <div class="metric" data-type="stars">
+                            <div class="metric" data-tooltip="Stars: 6">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                 </svg>
                                 <span class="metric-value">6</span>
                             </div>
-                            <div class="metric" data-type="forks">
+                            <div class="metric" data-tooltip="Forks: 2">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                                 </svg>
                                 <span class="metric-value">2</span>
                             </div>
-                            <div class="metric" data-type="commits">
+                            <div class="metric" data-tooltip="Commits: 157">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                     <path d="M12 6v6l4 2"/>
                                 </svg>
                                 <span class="metric-value">157</span>
                             </div>
-                            <div class="metric" data-type="contributors">
+                            <div class="metric team-only" data-tooltip="Contributors: 7">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                                     <circle cx="9" cy="7" r="4"/>
@@ -274,30 +330,24 @@
                             <span class="tag">Linux</span>
                         </div>
                         <div class="project-metrics">
-                            <div class="metric" data-type="stars">
+                            <div class="metric" data-tooltip="Stars: 2">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                 </svg>
                                 <span class="metric-value">2</span>
                             </div>
-                            <div class="metric" data-type="forks">
+                            <div class="metric" data-tooltip="Forks: 0">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                                 </svg>
                                 <span class="metric-value">0</span>
                             </div>
-                            <div class="metric" data-type="commits">
+                            <div class="metric" data-tooltip="Commits: 1">
                                 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                     <path d="M12 6v6l4 2"/>
                                 </svg>
                                 <span class="metric-value">1</span>
-                            </div>
-                            <div class="metric" data-type="last-update">
-                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="metric-value">Recent</span>
                             </div>
                         </div>
                     </div>

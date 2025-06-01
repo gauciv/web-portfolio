@@ -794,10 +794,60 @@ h2.section-heading::after {
     background: rgba(88, 166, 255, 0.05);
     border-radius: 6px;
     transition: all 0.2s ease;
+    position: relative;
+    cursor: help;
 }
 
 .metric:hover {
     background: rgba(88, 166, 255, 0.08);
+}
+
+.metric::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    z-index: 10;
+}
+
+.metric::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: var(--bg-secondary);
+    border-right: 1px solid rgba(88, 166, 255, 0.2);
+    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.metric:hover::before,
+.metric:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.metric:hover::after {
+    transform: translateX(-50%) rotate(45deg) scale(1);
 }
 
 .metric-icon {
@@ -811,6 +861,11 @@ h2.section-heading::after {
     font-size: 0.95rem;
     color: var(--text-primary);
     font-weight: 600;
+}
+
+/* Hide team-only metrics for solo projects */
+.project-card[data-category="solo"] .team-only {
+    display: none;
 }
 
 .project-links {
@@ -1652,4 +1707,173 @@ footer {
 .project-date {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.legend-button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.legend-button:hover {
+    color: var(--accent);
+    background: rgba(88, 166, 255, 0.1);
+}
+
+.legend-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.metrics-legend-tooltip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.metrics-legend-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.tooltip-header h4 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.close-tooltip {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-tooltip:hover {
+    color: var(--accent);
+}
+
+.tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.metric-explanation {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(88, 166, 255, 0.05);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.metric-explanation:hover {
+    background: rgba(88, 166, 255, 0.1);
+}
+
+.metric-explanation .metric-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.explanation-text {
+    flex: 1;
+}
+
+.explanation-text strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.explanation-text p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Overlay for the tooltip */
+.tooltip-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.tooltip-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .metrics-legend-tooltip {
+        width: 95%;
+        padding: 1.25rem;
+    }
+    
+    .tooltip-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .metric-explanation {
+        padding: 0.5rem;
+    }
+    
+    .explanation-text strong {
+        font-size: 0.9rem;
+    }
+    
+    .explanation-text p {
+        font-size: 0.85rem;
+    }
 }
