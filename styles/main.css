@@ -697,9 +697,15 @@ h2.section-heading::after {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     padding: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .project-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    max-width: 100%;
     background: linear-gradient(135deg, rgba(22, 27, 34, 0.95), rgba(88, 166, 255, 0.05));
     border-radius: 12px;
     padding: 1.75rem;
@@ -712,12 +718,22 @@ h2.section-heading::after {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(88, 166, 255, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 0.75rem;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     border-color: rgba(88, 166, 255, 0.15);
+}
+
+.project-header-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-header {
@@ -1350,100 +1366,22 @@ h2.section-heading::after {
 }
 
 /* Ensure responsive behavior */
-@media (max-width: 768px) {
-    header, main, footer {
-        padding: 1rem;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    nav ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 1rem;
-    }
-    
-    section {
-        padding: 2rem 1rem;
-        overflow-x: hidden;
-    }
-
-    .about-content {
+@media (max-width: 900px) {
+    .projects-grid {
         grid-template-columns: 1fr;
-        padding: 0;
+        gap: 1.5rem;
     }
+}
 
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-description {
-        font-size: 1.1rem;
-    }
-
-    .about-card {
-        padding: 1.5rem;
-    }
-
-    .code-snippet {
-        padding: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .typing-text {
-        font-size: 1.2rem;
-    }
-
-    .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
         gap: 1rem;
+        padding: 0.5rem 0;
+    }
+    .project-card {
         padding: 1rem;
-    }
-
-    .tech-item {
-        padding: 0.8rem;
-    }
-
-    .tech-icon {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-    }
-
-    .cta-button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .tech-grid {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    }
-
-    .section-heading {
-        font-size: 1.75rem;
-    }
-}
-
-@media (min-width: 768px) {
-    section {
-        min-height: calc(100vh - 4rem);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        font-size: 0.95rem;
     }
 }
 
