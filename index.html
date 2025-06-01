@@ -188,59 +188,135 @@
             <div class="project-filters">
                 <div class="filter-buttons">
                     <button class="filter-button active" data-filter="all">All</button>
-                    <button class="filter-button" data-filter="devops">DevOps</button>
-                    <button class="filter-button" data-filter="cloud">Cloud</button>
-                    <button class="filter-button" data-filter="automation">Automation</button>
+                    <button class="filter-button" data-filter="solo">Solo Projects</button>
+                    <button class="filter-button" data-filter="team">Team Projects</button>
                 </div>
                 <span class="project-count"></span>
             </div>
             <div class="projects-grid">
-                <article class="project-card" data-category="devops" data-repo="project-one">
+                <article class="project-card" data-category="team" data-repo="inventory_management_system">
                     <div class="project-content">
                         <div class="project-header">
-                            <h3>Project One</h3>
+                            <div class="project-title-container">
+                                <h3>Inventory Management System</h3>
+                                <span class="project-category team">Team</span>
+                            </div>
                             <div class="project-meta">
-                                <span class="project-date">2025</span>
+                                <span class="project-date">2024</span>
                                 <span class="project-status">Active</span>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                        <p>A comprehensive desktop-based inventory management system built with Java, featuring Docker containerization, MySQL database, and a modern user interface. Developed as a team project with 7 contributors.</p>
                         <div class="project-tags">
+                            <span class="tag">Java</span>
                             <span class="tag">Docker</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">CI/CD</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Desktop App</span>
                         </div>
                         <div class="project-metrics">
                             <div class="metric" data-type="stars">
-                                <span class="metric-icon">⭐</span>
-                                <span class="metric-value">-</span>
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="metric-value">6</span>
                             </div>
                             <div class="metric" data-type="forks">
-                                <span class="metric-icon">🔀</span>
-                                <span class="metric-value">-</span>
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                                <span class="metric-value">2</span>
+                            </div>
+                            <div class="metric" data-type="commits">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                <span class="metric-value">157</span>
+                            </div>
+                            <div class="metric" data-type="contributors">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                                <span class="metric-value">7</span>
                             </div>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link" data-type="demo">View Project</a>
-                        <a href="#" class="project-link" data-type="source">Source Code</a>
+                        <a href="https://github.com/gauciv/inventory_management_system" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>Link to Repository</span>
+                            <svg class="project-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 7l10 10M7 17V7h10"/>
+                            </svg>
+                        </a>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card" data-category="solo" data-repo="shell-automation-toolkit">
                     <div class="project-content">
-                        <h3>Project Two</h3>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                        <div class="project-header">
+                            <div class="project-title-container">
+                                <h3>Shell Automation Toolkit</h3>
+                                <span class="project-category solo">Solo</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date">2024</span>
+                                <span class="project-status">Active</span>
+                            </div>
+                        </div>
+                        <p>A collection of shell scripts and automation tools designed to streamline DevOps workflows and system administration tasks. Built with a focus on reusability and efficiency.</p>
                         <div class="project-tags">
-                            <span class="tag">Node.js</span>
-                            <span class="tag">Express</span>
+                            <span class="tag">Shell Script</span>
+                            <span class="tag">DevOps</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric" data-type="stars">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="metric-value">2</span>
+                            </div>
+                            <div class="metric" data-type="forks">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                                <span class="metric-value">0</span>
+                            </div>
+                            <div class="metric" data-type="commits">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                <span class="metric-value">1</span>
+                            </div>
+                            <div class="metric" data-type="last-update">
+                                <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="metric-value">Recent</span>
+                            </div>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link">Source Code</a>
+                        <a href="https://github.com/gauciv/shell-automation-toolkit" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>Link to Repository</span>
+                            <svg class="project-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 7l10 10M7 17V7h10"/>
+                            </svg>
+                        </a>
                     </div>
                 </article>
+            </div>
+            <div class="project-refresh">
+                <button id="refresh-projects" class="refresh-button" title="Refresh project stats">
+                    <span class="refresh-icon">🔄</span>
+                    <span class="refresh-text">Refresh Stats</span>
+                </button>
+                <span class="last-updated">Last updated: <span id="last-update-time">Just now</span></span>
             </div>
         </section>
 
